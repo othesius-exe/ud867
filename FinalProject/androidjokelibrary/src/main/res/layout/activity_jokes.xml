@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/jokes_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/textview_right_left_padding"
+        android:paddingRight="@dimen/textview_right_left_padding"
+        android:paddingTop="@dimen/textview_top_bottom_padding"
+        android:paddingBottom="@dimen/textview_top_bottom_padding"
+        android:textSize="@dimen/primaryText"/>
+
+</RelativeLayout>

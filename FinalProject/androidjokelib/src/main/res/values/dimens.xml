@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Joke display view dimens -->
+    <dimen name="textview_top_bottom_padding">8dp</dimen>
+    <dimen name="textview_right_left_padding">10dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="primaryText">16sp</dimen>
+    <dimen name="secondaryText">14sp</dimen>
+</resources>
