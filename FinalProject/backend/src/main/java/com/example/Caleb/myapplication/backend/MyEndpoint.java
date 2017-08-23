@@ -6,6 +6,7 @@
 
 package com.example.Caleb.myapplication.backend;
 
+import com.example.JokeProvider;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -39,12 +40,9 @@ public class MyEndpoint {
 
     @ApiMethod(name = "getJokeFromLibrary")
     public MyBean getJokeFromLibrary() {
-
+        String joke = JokeProvider.getJoke();
         MyBean response = new MyBean();
-        String joke = response.getJoke();
         response.setData(joke);
-
         return response;
     }
-
 }

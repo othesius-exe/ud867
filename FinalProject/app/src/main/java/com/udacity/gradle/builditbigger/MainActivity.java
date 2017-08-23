@@ -1,34 +1,35 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
-import com.example.JokeProvider;
-import com.example.androidjokelibrary.JokeDisplayIntent;
+import android.widget.ProgressBar;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
+
     private Button tellJokeButton;
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mProgressBar = (ProgressBar) findViewById(R.id.progressbar);
+
         tellJokeButton = (Button) findViewById(R.id.joke_button);
 
         tellJokeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                JokeProvider jokeProvider = new JokeProvider();
-                Intent intent = new Intent(MainActivity.this, JokeDisplayIntent.class);
-                intent.putExtra(JokeDisplayIntent.JOKE_TAG, jokeProvider.getJoke());
-                startActivity(intent);
+                new EndpointsAsyncTask(mProgressBar, MainActivity.this).execute();
+                Log.i(LOG_TAG, "Button Clicked");
             }
         });
     }
