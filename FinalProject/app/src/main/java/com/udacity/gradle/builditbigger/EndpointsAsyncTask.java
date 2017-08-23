@@ -29,9 +29,7 @@ public class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPreExecute() {
-        if (mProgressBar != null) {
-            mProgressBar.setVisibility(View.VISIBLE);
-        }
+        super.onPreExecute();
     }
 
     @Override
@@ -39,7 +37,7 @@ public class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
         if (myApiService == null) {
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
-                    .setRootUrl("https://10.0.2.2:8080/_ah/api/")
+                    .setRootUrl("http://10.0.2.2:8080/_ah/api/")
                     .setApplicationName("FinalProject")
                     .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
                         @Override
@@ -60,7 +58,7 @@ public class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        Log.e(EndpointsAsyncTask.class.getSimpleName(), "" + result);
+        Log.i(EndpointsAsyncTask.class.getSimpleName(), "" + result);
 
         if (mProgressBar != null) {
             mProgressBar.setVisibility(View.GONE);

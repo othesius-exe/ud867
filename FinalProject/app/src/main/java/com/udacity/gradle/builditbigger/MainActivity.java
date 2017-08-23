@@ -28,8 +28,7 @@ public class MainActivity extends AppCompatActivity {
         tellJokeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new EndpointsAsyncTask(mProgressBar, MainActivity.this).execute();
-                Log.i(LOG_TAG, "Button Clicked");
+                getJoke();
             }
         });
     }
@@ -55,6 +54,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void getJoke() {
+        new EndpointsAsyncTask(mProgressBar, MainActivity.this).execute();
+        Log.i(LOG_TAG, "Button Clicked");
     }
 
 }

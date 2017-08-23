@@ -3,6 +3,7 @@ package com.example.androidjokelibrary;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 
 /**
@@ -26,6 +27,8 @@ public class JokeDisplayIntent extends AppCompatActivity {
 
         // Retrieve the intent used to start this activity
         String joke = getIntent().getStringExtra(JOKE_TAG);
+
+        Log.i(LOG_TAG, "" + joke);
 
         // Set up the TextView that will display the joke
         TextView jokeView = (TextView) findViewById(R.id.jokes_view);
