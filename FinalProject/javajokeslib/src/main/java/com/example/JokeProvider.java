@@ -21,7 +21,7 @@ public class JokeProvider {
             "An SQL query goes into a bar, walks up to two tables and asks, \"Can I join you?\""
     };
 
-    public String getJoke() {
+    public static String getJoke() {
         int i = new Random().nextInt(JOKES.length);
         System.out.println(LOG_TAG + ": i = " + Integer.toString(i));
         return JOKES[i];
