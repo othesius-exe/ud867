@@ -1,13 +1,19 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.3'
+    compileSdkVersion 26
+    buildToolsVersion '26.0.1'
+
+    repositories {
+        maven {
+            url 'https://maven.google.com'
+        }
+    }
 
     defaultConfig {
         applicationId "com.udacity.gradle.builditbigger"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -18,6 +24,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        free {
+            applicationId 'com.udacity.gradle.builditbigger.free'
+            versionName '1.0-free'
+            minSdkVersion 16
+            targetSdkVersion 25
+        }
+        paid {
+            applicationId 'com.udacity.gradle.builditbigger.paid'
+            versionName '1.0-paid'
+            minSdkVersion 16
+            targetSdkVersion 25
+        }
+    }
+    sourceSets {
+        main {
+            java.srcDirs = ['src/main/java', 'src/test/java', 'src/test/java/']
+        }
+    }
 }
 
 dependencies {
@@ -25,7 +51,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:appcompat-v7:26.0.1'
     compile 'com.google.android.gms:play-services-ads:11.0.4'
     compile 'com.google.code.findbugs:jsr305:2.0.1'
     compile project(path: ':backend', configuration: 'android-endpoints')
@@ -33,4 +59,14 @@ dependencies {
 
     compile project(':javajokeslib')
     compile project(':androidjokelibrary')
+
+    testCompile 'org.mockito:mockito-core:2.+'
+    androidTestCompile('com.android.support.test:runner:1.0.0') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestCompile('com.android.support.test:rules:1.0.0') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:1.10.19'
 }

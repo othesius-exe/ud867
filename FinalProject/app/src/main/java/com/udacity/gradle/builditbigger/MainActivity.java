@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getJoke() {
-        new EndpointsAsyncTask(mProgressBar, MainActivity.this).execute();
+        new EndpointsAsyncTask(MainActivity.this).execute();
         Log.i(LOG_TAG, "Button Clicked");
     }
 

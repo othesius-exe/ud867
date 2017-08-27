@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
 import android.widget.ProgressBar;
 
 import com.example.androidjokelibrary.JokeDisplayIntent;
@@ -22,14 +21,14 @@ public class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
     private Context mContext;
     private ProgressBar mProgressBar;
 
-    public EndpointsAsyncTask(ProgressBar progressBar, Context context) {
+    public EndpointsAsyncTask(Context context) {
         mContext = context;
-        mProgressBar = progressBar;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+
     }
 
     @Override
@@ -60,9 +59,6 @@ public class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
     protected void onPostExecute(String result) {
         Log.i(EndpointsAsyncTask.class.getSimpleName(), "" + result);
 
-        if (mProgressBar != null) {
-            mProgressBar.setVisibility(View.GONE);
-        }
 
         Intent intent = new Intent(mContext, JokeDisplayIntent.class);
         intent.putExtra(JokeDisplayIntent.JOKE_TAG, result);
