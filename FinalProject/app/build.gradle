@@ -27,13 +27,13 @@ android {
 
     productFlavors {
         free {
-            applicationId 'com.udacity.gradle.builditbigger.free'
+            applicationIdSuffix '.free'
             versionName '1.0-free'
             minSdkVersion 16
             targetSdkVersion 25
         }
         paid {
-            applicationId 'com.udacity.gradle.builditbigger.paid'
+            applicationIdSuffix '.paid'
             versionName '1.0-paid'
             minSdkVersion 16
             targetSdkVersion 25
@@ -42,6 +42,13 @@ android {
     sourceSets {
         main {
             java.srcDirs = ['src/main/java', 'src/test/java', 'src/test/java/']
+        }
+        free {
+            java.srcDirs = ['src/free/java', 'src/free/java/']
+            manifest.srcFile 'src/free/AndroidManifest.xml'
+        }
+        paid {
+            manifest.srcFile 'src/paid/AndroidManifest.xml'
         }
     }
 }
